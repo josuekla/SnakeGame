@@ -35,7 +35,8 @@ class Apple():
 
     def draw_apple(self):
         apple_rect = pygame.Rect(self.position.x * cells_size, self.position.y * cells_size, cells_size, cells_size)
-        pygame.draw.rect(screen, (5, 85, 240), apple_rect)
+        screen.blit(apple, apple_rect)
+        # pygame.draw.rect(screen, (5, 85, 240), apple_rect)
 
     def randomize(self):
         self.x = random.randint(0, cells_number - 1)
@@ -78,6 +79,7 @@ cells_size = 35
 cells_number = 15
 screen = pygame.display.set_mode((cells_size * cells_number, cells_size * cells_number))
 clock = pygame.time.Clock()
+apple = pygame.image.load('img/apple.png').convert_alpha()
 
 main_game = Main()
 
