@@ -135,7 +135,7 @@ main_game = Main()
 
 
 SCREEN_UPDATE = pygame.USEREVENT
-pygame.time.set_timer(SCREEN_UPDATE, 50)
+pygame.time.set_timer(SCREEN_UPDATE, 150)
 
 while True:
     
