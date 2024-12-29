@@ -32,7 +32,6 @@ class Snake():
         self.update_tail_graphics()
 
         for index, block in enumerate(self.body):
-            print(index, block)
             x_pos = int(block.x * cells_size)
             y_pos = int(block.y * cells_size)
             block_rect = pygame.Rect(x_pos, y_pos, cells_size, cells_size)
@@ -111,8 +110,9 @@ class Main():
         self.check_fail()
 
     def draw_elements(self):
-        self.snake.draw_snake()
+        self.draw_grass()
         self.fruit.draw_apple()
+        self.snake.draw_snake()
 
     def check_colisition(self):
         if self.fruit.position == self.snake.body[0]:
@@ -130,6 +130,20 @@ class Main():
         pygame.quit()
         sys.exit()
         
+    def draw_grass(self):
+        grass_color = (170, 215, 81)
+        for row in range(cells_number):
+            if row % 2 == 0:
+                for col in range(cells_number):
+                    if col % 2 == 0:
+                        grass_rect = pygame.Rect(col * cells_size, row * cells_size, cells_size, cells_size)
+                        pygame.draw.rect(screen, grass_color, grass_rect)
+            else:
+                if row % 2 != 0:
+                    for col in range(cells_number):
+                        if col % 2 != 0:
+                            grass_rect = pygame.Rect(col * cells_size, row * cells_size, cells_size, cells_size)
+                            pygame.draw.rect(screen, grass_color, grass_rect)
 
 pygame.init()
 cells_size = 40
