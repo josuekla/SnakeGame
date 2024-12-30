@@ -25,7 +25,9 @@ class Snake():
         self.body_tl = pygame.image.load('img/body_tl.png').convert_alpha()
         self.body_br = pygame.image.load('img/body_br.png').convert_alpha()
         self.body_bl = pygame.image.load('img/body_bl.png').convert_alpha()
+
         self.crunch_sound = pygame.mixer.Sound('sound/crunch.mp3')
+        self.game_over_sound = pygame.mixer.Sound('sound/game_over.mp3')
 
     
     def draw_snake(self):
@@ -88,6 +90,8 @@ class Snake():
     
     def play_crunch_sound(self):
         self.crunch_sound.play()
+    def play_game_over_sound(self):
+        self.game_over_sound.play()
 
     def reset_game(self):
         self.body = [Vector2(3, 10), Vector2(2, 10), Vector2(1, 10)]
@@ -135,6 +139,7 @@ class Main():
 
     def check_fail(self):
         if not 0 <= self.snake.body[0].x < cells_number or not 0 <= self.snake.body[0].y < cells_number:
+            self.snake.play_game_over_sound()
             self.game_over()
         for block in self.snake.body[1:]:
             if block == self.snake.body[0]:
