@@ -18,3 +18,10 @@ O projeto é uma ótima oportunidade para aprender:
 1. Certifique-se de ter o Python instalado na sua máquina. [Download Python](https://www.python.org/downloads/)
 2. Instale a biblioteca Pygame:
    pip install pygame
+
+
+
+## Créditos Musicais
+Crunch - Sound Effect by <a href="https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140506">Universfield</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140506">Pixabay</a>
+
+Game Over - Sound Effect by <a href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=80925">freesound_community</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=80925">Pixabay</a>
