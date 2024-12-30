@@ -25,6 +25,7 @@ class Snake():
         self.body_tl = pygame.image.load('img/body_tl.png').convert_alpha()
         self.body_br = pygame.image.load('img/body_br.png').convert_alpha()
         self.body_bl = pygame.image.load('img/body_bl.png').convert_alpha()
+        self.crunch_sound = pygame.mixer.Sound('sound/crunch.mp3')
 
     
     def draw_snake(self):
@@ -85,6 +86,9 @@ class Snake():
     def block_add(self):
         self.add_block = True
     
+    def play_crunch_sound(self):
+        self.crunch_sound.play()
+
 class Apple():
     def __init__(self):
         self.randomize()
@@ -119,6 +123,7 @@ class Main():
         if self.fruit.position == self.snake.body[0]:
             self.fruit.randomize()
             self.snake.block_add()
+            self.snake.play_crunch_sound()
 
     def check_fail(self):
         if not 0 <= self.snake.body[0].x < cells_number or not 0 <= self.snake.body[0].y < cells_number:
@@ -157,6 +162,7 @@ class Main():
         screen.blit(score_surface, score_rect)
         screen.blit(apple, apple_rect)
 
+pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.init()
 cells_size = 40
 cells_number = 15
