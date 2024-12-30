@@ -113,6 +113,7 @@ class Main():
         self.draw_grass()
         self.fruit.draw_apple()
         self.snake.draw_snake()
+        self.draw_score()
 
     def check_colisition(self):
         if self.fruit.position == self.snake.body[0]:
@@ -145,13 +146,25 @@ class Main():
                             grass_rect = pygame.Rect(col * cells_size, row * cells_size, cells_size, cells_size)
                             pygame.draw.rect(screen, grass_color, grass_rect)
 
+    def draw_score(self):
+        score_text = str(len(self.snake.body) - 3)
+        score_surface = game_font.render(score_text, True, (56, 74, 12))
+        score_x = int(cells_size * cells_number - 60)
+        score_y = int(cells_size * cells_number - 40)
+        score_rect = score_surface.get_rect(center = (score_x, score_y))
+        apple_rect = apple.get_rect(midright = (score_rect.left, score_rect.centery))
+        
+        screen.blit(score_surface, score_rect)
+        screen.blit(apple, apple_rect)
+
 pygame.init()
 cells_size = 40
-cells_number = 16   
+cells_number = 15
 screen = pygame.display.set_mode((cells_size * cells_number, cells_size * cells_number))
 clock = pygame.time.Clock()
 apple = pygame.image.load('img/apple.png').convert_alpha()
 apple = pygame.transform.scale(apple, (cells_size, cells_size))
+game_font = pygame.font.Font('font/Roboto-Bold.ttf', 25)
 
 main_game = Main()
 
